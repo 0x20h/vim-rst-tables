@@ -143,7 +143,7 @@ def table_line(widths, header=False):
 
 
 def get_field_width(field_text):
-    return max(map(lambda s: len(s), field_text.split('\n')))
+    return max(map(lambda s: len(s.decode('utf-8')), field_text.split('\n')))
 
 
 def split_row_into_lines(row):
