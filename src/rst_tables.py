@@ -124,7 +124,7 @@ def split_table_row(row_string):
 def parse_table(raw_lines):
     row_partition = partition_raw_lines(raw_lines)
 	lines = map(lambda row_string:
-		join_rows(map(split_table_row, row_string.decode('utf-8'))),
+		join_rows(map(split_table_row, row_string.encode('utf-8'))),
 		row_partition
 	)
     return unify_table(lines)
@@ -145,7 +145,7 @@ def table_line(widths, header=False):
 
 
 def get_field_width(field_text):
-    return max(map(lambda s: len(s.decode('utf-8')), field_text.split('\n')))
+    return max(map(lambda s: len(s.encode('utf-8')), field_text.split('\n')))
 
 
 def split_row_into_lines(row):
