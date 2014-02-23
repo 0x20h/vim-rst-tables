@@ -123,8 +123,10 @@ def split_table_row(row_string):
 
 def parse_table(raw_lines):
     row_partition = partition_raw_lines(raw_lines)
-    lines = map(lambda row_string: join_rows(map(split_table_row, row_string)),
-                row_partition)
+	lines = map(lambda row_string:
+		join_rows(map(split_table_row, row_string.decode('utf-8'))),
+		row_partition
+	)
     return unify_table(lines)
 
 
